@@ -111,9 +111,6 @@
 			
 			function displaySurveyPreview() {
 				var $surveyPreview = $('#surveyPreview');
-				
-				$surveyPreview.find('.survey-title').empty();
-				$surveyPreview.find('.survey-questions').empty();
 
 				if ($this.settings.data != null)
 				{
@@ -272,6 +269,12 @@
 				});
 				
 				// Survey preview modal events
+				$surveyPreviewModal.on('hidden.bs.modal', function (event) {
+					var $surveyPreview = $('#surveyPreview');
+					$surveyPreview.find('.survey-title').empty();
+					$surveyPreview.find('.survey-questions').empty();
+				});
+				
 				$surveyPreviewModal.on('shown.bs.modal', function (event) {
 					displaySurveyPreview();
 					

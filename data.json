@@ -1,0 +1,87 @@
+var data = {
+	title: "Customer Satisfaction Survey",
+	questions: [
+		{
+			questionId:1,
+			order:1,
+			title: "Overall, how satisfied or dissatisfied are you with our company?",
+			answerType: 3,
+			required: false,
+			answers: [
+				{ optionId: 1, order: 1, option: "Very satisfied", isOther:false },
+				{ optionId: 2, order: 2, option: "Somewhat satisfied", isOther:false },
+				{ optionId: 3, order: 3, option: "Neither satisfied nor dissatisfied", isOther:false },
+				{ optionId: 4, order: 4, option: "Somewhat dissatisfied", isOther:false },
+				{ optionId: 5, order: 5, option: "Very dissatisfied", isOther:false }
+			]
+		},
+		{
+			questionId:2,
+			order:2,
+			title: "Which of the following words would you use to describe our products? Select all that apply.",
+			answerType: 4,
+			required: false,
+			answers: [
+				{ optionId: 6, order: 1, option: "Reliable", isOther:false },
+				{ optionId: 7, order: 2, option: "High quality", isOther:false },
+				{ optionId: 8, order: 3, option: "Useful", isOther:false },
+				{ optionId: 9, order: 4, option: "Good value for money", isOther:false },
+				{ optionId: 10, order: 5, option: "Overpriced", isOther:false },
+				{ optionId: 11, order: 6, option: "Impractical", isOther:false },
+				{ optionId: 12, order: 7, option: "Ineffective", isOther:false },
+				{ optionId: 13, order: 8, option: "Poor quality", isOther:false },
+				{ optionId: 14, order: 9, option: "Unreliable", isOther:false }
+			]
+		},
+		{
+			questionId:3,
+			order:3,
+			title: "How well do our products meet your needs?",
+			answerType: 3,
+			required: false,
+			answers: [
+				{ optionId: 15, order: 1, option: "Extremely well", isOther:false },
+				{ optionId: 16, order: 2, option: "Very well", isOther:false },
+				{ optionId: 17, order: 3, option: "Somewhat well", isOther:false },
+				{ optionId: 18, order: 4, option: "Not so well", isOther:false },
+				{ optionId: 19, order: 5, option: "Not at all well", isOther:false }
+			]
+		},
+		{
+			questionId:4,
+			order:4,
+			title: "How would you rate the quality of the product?",
+			answerType: 3,
+			required: false,
+			answers: [
+				{ optionId: 20, order: 1, option: "Very high quality", isOther:false },
+				{ optionId: 21, order: 2, option: "High quality", isOther:false },
+				{ optionId: 22, order: 3, option: "Neither high nor low quality", isOther:false },
+				{ optionId: 23, order: 4, option: "Low quality", isOther:false },
+				{ optionId: 24, order: 5, option: "Very low quality", isOther:false }
+			]
+		},
+		{
+			questionId:5,
+			order:5,
+			title: "How would you rate the value for money of the product?",
+			answerType: 3,
+			required: false,
+			answers: [
+				{ optionId: 20, order: 1, option: "Excellent", isOther:false },
+				{ optionId: 21, order: 2, option: "Above average", isOther:false },
+				{ optionId: 22, order: 3, option: "Average", isOther:false },
+				{ optionId: 23, order: 4, option: "Below average", isOther:false },
+				{ optionId: 24, order: 5, option: "Poor", isOther:false }
+			]
+		},
+		{
+			questionId: 6,
+			order: 6,
+			title: "Do you have any other comments, questions, or concerns?",
+			answerType: 1,
+			required: false,
+			answers: []
+		}
+	]
+};

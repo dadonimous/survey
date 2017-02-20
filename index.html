@@ -5,48 +5,13 @@
 		<meta http-equiv="Cache-Control" content="no-cache" />
 		<meta http-equiv="Pragma" content="no-cache" />
 		<meta http-equiv="Expires" content="0" />
+		<meta charset="UTF-8">
 		<link href="css/jquery-ui.min.css" rel="stylesheet" type="text/css" />
-		<link href="css/jquery-ui.structure.min.css" rel="stylesheet" type="text/css" />
 		<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 		<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 		<link href="css/select2.min.css" rel="stylesheet" type="text/css" />
 		<link href="css/select2-bootstrap.css" rel="stylesheet" type="text/css" />
-		<style>
-			body { background-color:#eeeeee; }
-			.m0 { margin:0 !important; }
-			.media { overflow:inherit !important; }
-			.survey-edit-container, .survey-preview-container { color:#888; background-color:#fff; padding:15px; font-size:1em; margin-top:30px; }
-			.survey-preview-container { background-color:transparent; padding:0; margin-top:0; }
-			a { color:#888 !important; text-decoration:underline; }
-			.survey-title-container, .survey-question-container, .survey-question-add, .survey-question-preview { border:1px solid #eee; padding:10px; }
-			.survey-edit-container .survey-question-container { padding:0 !important; }
-			.survey-edit-container .survey-question-container .media { padding:2px 10px 10px 10px; overflow:inherit !important; }
-			.survey-preview-container .survey-title-container, .survey-preview-container .survey-question-container, .survey-preview-container .survey-question-add { background-color:#f5f5f5; }			
-			.survey-title-container .dropdown-toggle, .survey-question-container .dropdown-toggle { display:block; padding:0 5px 0 5px; }
-			.survey-question-container { margin-top:15px !important; }
-			.survey-question-container:first-child { margin-top:0 !important; }
-			.survey-question-container-handle { display:block; width:100%; height:12px; cursor: move; text-align:center; font-size:10px; }
-			.survey-title { font-size:2.1em; }
-			.survey-questions { margin-top:15px; }
-			.survey-question { font-size:1.625em; margin-bottom:10px; }
-			.survey-question-required::after { content:' *'; color:red; }
-			.survey-question-required::after { content:' *'; color:red; }
-			.survey-question-required-checkbox {  padding:5px 10px; color:#a94442; background-color:#f2dede; border:1px solid #ebccd1; border-radius:4px; }
-			.survey-question-order { font-size:1.4em; }
-			.survey-answer { font-size:1.125em; }
-			.survey-answer-option { margin-left:5px; }
-			.survey-answer-option-checkbox > i, .survey-answer-option-radio > i { }
-			.survey-answer-text { padding:5px 10px 5px 10px; border-bottom:1px dashed #ddd; }
-			.survey-question-add, .survey-question-preview { display:block; margin-top:15px; font-size:1.625em; text-align:center; }
-			.survey-question-preview { background-color:#f5f5f5; font-size:1.5em; }
-			.dropdown-menu { z-index:1000; }
-			.survey-answer-container-modal { border:1px solid #eee; padding:10px; }
-			.survey-answer-option-select, .survey-answer-option-radio, .survey-answer-option-checkbox { margin-top:10px; }
-			.survey-answer-option-new { margin-top:5px; }
-			.survey-answer-option-new-other { margin-left:10px; }
-			.other-input-container { padding-left:20px; }
-			.select2 { width:100% !important; }			
-		</style>
+		<link href="js/survey.plugin/survey.plugin.css" rel="stylesheet" type="text/css" />
 	</head>
 	<body>
 		<div class="container">
@@ -56,97 +21,10 @@
 		<script type="text/javascript" src="js/jquery-ui.min.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/select2.full.js"></script>
-		<script type="text/javascript" src="js/survey.plugin.js"></script>
+		<script type="text/javascript" src="js/survey.plugin/survey.plugin.js"></script>
+		<script type="text/javascript" src="data.json"></script>
 		<script type="text/javascript">
 			$(document).ready(function() {
-				var data = {
-					title: "Customer Satisfaction Survey",
-					questions: [
-						{
-							questionId:1,
-							order:1,
-							title: "Overall, how satisfied or dissatisfied are you with our company?",
-							answerType: 3,
-							required: false,
-							answers: [
-								{ optionId: 1, order: 1, option: "Very satisfied", isOther:false },
-								{ optionId: 2, order: 2, option: "Somewhat satisfied", isOther:false },
-								{ optionId: 3, order: 3, option: "Neither satisfied nor dissatisfied", isOther:false },
-								{ optionId: 4, order: 4, option: "Somewhat dissatisfied", isOther:false },
-								{ optionId: 5, order: 5, option: "Very dissatisfied", isOther:false }
-							]
-						},
-						{
-							questionId:2,
-							order:2,
-							title: "Which of the following words would you use to describe our products? Select all that apply.",
-							answerType: 4,
-							required: false,
-							answers: [
-								{ optionId: 6, order: 1, option: "Reliable", isOther:false },
-								{ optionId: 7, order: 2, option: "High quality", isOther:false },
-								{ optionId: 8, order: 3, option: "Useful", isOther:false },
-								{ optionId: 9, order: 4, option: "Good value for money", isOther:false },
-								{ optionId: 10, order: 5, option: "Overpriced", isOther:false },
-								{ optionId: 11, order: 6, option: "Impractical", isOther:false },
-								{ optionId: 12, order: 7, option: "Ineffective", isOther:false },
-								{ optionId: 13, order: 8, option: "Poor quality", isOther:false },
-								{ optionId: 14, order: 9, option: "Unreliable", isOther:false }
-							]
-						},
-						{
-							questionId:3,
-							order:3,
-							title: "How well do our products meet your needs?",
-							answerType: 3,
-							required: false,
-							answers: [
-								{ optionId: 15, order: 1, option: "Extremely well", isOther:false },
-								{ optionId: 16, order: 2, option: "Very well", isOther:false },
-								{ optionId: 17, order: 3, option: "Somewhat well", isOther:false },
-								{ optionId: 18, order: 4, option: "Not so well", isOther:false },
-								{ optionId: 19, order: 5, option: "Not at all well", isOther:false }
-							]
-						},
-						{
-							questionId:4,
-							order:4,
-							title: "How would you rate the quality of the product?",
-							answerType: 3,
-							required: false,
-							answers: [
-								{ optionId: 20, order: 1, option: "Very high quality", isOther:false },
-								{ optionId: 21, order: 2, option: "High quality", isOther:false },
-								{ optionId: 22, order: 3, option: "Neither high nor low quality", isOther:false },
-								{ optionId: 23, order: 4, option: "Low quality", isOther:false },
-								{ optionId: 24, order: 5, option: "Very low quality", isOther:false }
-							]
-						},
-						{
-							questionId:5,
-							order:5,
-							title: "How would you rate the value for money of the product?",
-							answerType: 3,
-							required: false,
-							answers: [
-								{ optionId: 20, order: 1, option: "Excellent", isOther:false },
-								{ optionId: 21, order: 2, option: "Above average", isOther:false },
-								{ optionId: 22, order: 3, option: "Average", isOther:false },
-								{ optionId: 23, order: 4, option: "Below average", isOther:false },
-								{ optionId: 24, order: 5, option: "Poor", isOther:false }
-							]
-						},
-						{
-							questionId: 6,
-							order: 6,
-							title: "Do you have any other comments, questions, or concerns?",
-							answerType: 1,
-							required: false,
-							answers: []
-						}
-					]
-				};
-				
 				$('#surveyEditContainer').pSurvey({ data:data });
 			});
 		</script>
